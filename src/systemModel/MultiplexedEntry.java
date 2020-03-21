@@ -1,23 +1,43 @@
 package systemModel;
 
-public class MultiplexedEntry {
+import java.util.Date;
 
-    private int numberOfEntries;
+public class MultiplexedEntry extends Subscription {
+
     public static int price = 15;
 
-    public MultiplexedEntry(int numberOfEntries) {
+    private int numberOfEntries;
+    private int remainedEntries;
+
+
+    public MultiplexedEntry(Client client, Date paymentDate, int numberOfEntries) {
+        super(client, paymentDate);
         this.numberOfEntries = numberOfEntries;
+        this.remainedEntries = numberOfEntries;
     }
 
-    public int howManyToPay(int payment){
-        payment = numberOfEntries*price;
+    public int howManyToPay(){
+        int payment = numberOfEntries*price;
         return payment;
+    }
+
+    public void decreaseEntry(){
+        remainedEntries--;
+    }
+
+    public boolean isActive(){
+        if(remainedEntries == 0){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     @Override
     public String toString() {
         return "MultiplexedEntry{" +
-                "numberOfEntries=" + numberOfEntries +
+                "numberOfEntries=" + numberOfEntries + "remainEntries" + remainedEntries +
                 '}';
     }
 }

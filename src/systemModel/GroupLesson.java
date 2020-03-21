@@ -17,13 +17,13 @@ public class GroupLesson extends SportLesson {
 
     public boolean recordTheClient(Client client){
         if(maxGroupSize <= currentGroupSize){
-            System.out.println("The client recorded incorrectly");
+            System.out.println("The client recorded incorrectly. Group is full.");
             return false;
         }
         else{
             recordedClient[currentGroupSize] = client;
             currentGroupSize++;
-            System.out.println("The client recorded correctly");
+            System.out.println("The client recorded correctly.");
             return true;
         }
     }
