@@ -1,6 +1,8 @@
 package systemModel;
 
-public class LessonDate {
+import java.io.Serializable;
+
+public class LessonDate implements Serializable {
 
     private int year;
     private int month;

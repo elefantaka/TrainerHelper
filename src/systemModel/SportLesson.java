@@ -1,6 +1,8 @@
 package systemModel;
 
-public class SportLesson {
+import java.io.Serializable;
+
+public class SportLesson implements Serializable {
 
     protected int id;
     protected Employee employee;

@@ -1,8 +1,9 @@
 package systemModel;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class GroupLesson extends SportLesson {
+public class GroupLesson extends SportLesson implements Serializable {
 
     private int maxGroupSize;
     private int currentGroupSize;
