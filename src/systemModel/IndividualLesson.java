@@ -1,6 +1,8 @@
 package systemModel;
 
-public class IndividualLesson extends SportLesson{
+import java.io.Serializable;
+
+public class IndividualLesson extends SportLesson implements Serializable {
 
     private Client client;
 

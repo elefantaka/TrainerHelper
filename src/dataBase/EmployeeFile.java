@@ -8,15 +8,11 @@ import java.util.ArrayList;
 
 public class EmployeeFile {
 
-    private  ArrayList<Employee> employees = new ArrayList<Employee>();
+    public void addEmployee(ArrayList<Employee> employees) throws IOException {
 
-    public void addEmployee(Employee employees1) throws IOException {
+        File file = new File(Configuration.folder, Configuration.employeesFile);
 
-        employees.add(employees1);
-
-        System.out.println(employees);
-
-        FileOutputStream fileStream = new FileOutputStream("employees.txt");
+        FileOutputStream fileStream = new FileOutputStream(file);
 
         ObjectOutputStream obj = new ObjectOutputStream(fileStream);
 
@@ -27,9 +23,11 @@ public class EmployeeFile {
         obj.close();
     }
 
-    public void readEmployees() throws IOException, ClassNotFoundException {
+    public ArrayList<Employee> readEmployees() throws IOException, ClassNotFoundException {
 
-        employees.clear();
+        ArrayList<Employee> employees = new ArrayList<>();
+
+        File file = new File(Configuration.folder, Configuration.employeesFile);
 
         FileInputStream fileStream = new FileInputStream("employees.txt");
 
@@ -47,6 +45,9 @@ public class EmployeeFile {
             }
             catch(Exception ex){
         }
-        obj.close();
+
+            obj.close();
+
+            return employees;
     }
 }

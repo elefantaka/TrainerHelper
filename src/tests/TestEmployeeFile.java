@@ -1,29 +1,23 @@
-package systemModel;
+package tests;
 
 import dataBase.EmployeeFile;
+import systemModel.Employee;
+import systemModel.KindOfInstructor;
 
 import java.io.IOException;
 
-public class Main {
+public class TestEmployeeFile {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        System.out.println("Hello! I'm TrainerHelper");
+        System.out.println("EmplyeeFile Test");
 
         EmployeeFile employeeFile = new EmployeeFile();
 
-        Employee employee;
+        Employee employee = new Employee(1, "Kamila", "kamila@wp.pl", KindOfInstructor.SwimmingInstructor);
 
-        int id = 1;
-        String name = "Kamila";
-        String email = "kamila@wp.pl";
-        KindOfInstructor instructor = KindOfInstructor.SwimmingInstructor;
+        Employee employee1 = new Employee(2, "Tomek", "tomek@wp.pl", KindOfInstructor.ZumbaInstructor);
 
-        int id2 = 2;
-        String name2 = "Basia";
-        String email2 = "basia@wp.pl";
-        KindOfInstructor instructor2 = KindOfInstructor.YogaInstructor;
-
-        employeeFile.addEmployee(id, name, email, instructor);
-        employeeFile.addEmployee(id2, name2, email2, instructor2);
+        employeeFile.addEmployee(employee);
+        employeeFile.addEmployee(employee1);
 
         employeeFile.readEmployees();
     }
