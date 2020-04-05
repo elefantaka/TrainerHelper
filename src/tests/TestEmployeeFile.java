@@ -5,10 +5,13 @@ import systemModel.Employee;
 import systemModel.KindOfInstructor;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class TestEmployeeFile {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         System.out.println("EmplyeeFile Test");
+
+        ArrayList<Employee> employees = new ArrayList<>();
 
         EmployeeFile employeeFile = new EmployeeFile();
 
@@ -16,8 +19,10 @@ public class TestEmployeeFile {
 
         Employee employee1 = new Employee(2, "Tomek", "tomek@wp.pl", KindOfInstructor.ZumbaInstructor);
 
-        employeeFile.addEmployee(employee);
-        employeeFile.addEmployee(employee1);
+        employees.add(employee);
+        employees.add(employee1);
+
+        employeeFile.addEmployee(employees);
 
         employeeFile.readEmployees();
     }

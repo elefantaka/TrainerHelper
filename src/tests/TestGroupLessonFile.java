@@ -4,10 +4,13 @@ import dataBase.GroupLessonFile;
 import systemModel.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class TestGroupLessonFile {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         System.out.println("GroupLessonFile Test");
+
+        ArrayList<GroupLesson> groupLessons = new ArrayList<>();
 
         GroupLessonFile groupLessonFile = new GroupLessonFile();
 
@@ -19,9 +22,11 @@ public class TestGroupLessonFile {
 
         Client client = new Client(1, "Ewa", "ewa@wp.pl");
 
+        groupLessons.add(groupLesson);
+
         groupLesson.recordTheClient(client);
 
-        groupLessonFile.addGroupLesson(groupLesson);
+        groupLessonFile.addGroupLesson(groupLessons);
 
         groupLessonFile.readGroupLesson();
     }

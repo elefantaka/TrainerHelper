@@ -13,8 +13,11 @@ public class Schedule {
     }
 
     public GroupLesson findLesson(int id) {
+        Employee employee = new Employee(1, "Kasia", "kasia@wp.pl", KindOfInstructor.ZumbaInstructor);
+        LessonDate lessonDate = new LessonDate(2020, 10, 12, 15);
+        GroupLesson groupLesson = new GroupLesson(1, employee, KindOfLesson.Swimming, lessonDate, 5);
         //to do, do klasy groupLessonService, szuka id
-        //return...
+        return groupLesson;
     }
 
     public void registerClient(Client client, int idGroup){

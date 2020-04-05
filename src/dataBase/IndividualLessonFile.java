@@ -7,13 +7,11 @@ import java.util.ArrayList;
 
 public class IndividualLessonFile {
 
-    private ArrayList<IndividualLesson> individualLessons = new ArrayList<>();
+    public void addIndividualLesson(ArrayList<IndividualLesson> individualLessons) throws IOException {
 
-    public void addIndividualLesson(IndividualLesson individualLesson) throws IOException {
+        File file = new File(Configuration.folder, Configuration.individualLessonFile);
 
-        individualLessons.add(individualLesson);
-
-        FileOutputStream fileOutputStream = new FileOutputStream("individualLesson.txt");
+        FileOutputStream fileOutputStream = new FileOutputStream(file);
 
         ObjectOutputStream obj = new ObjectOutputStream(fileOutputStream);
 
@@ -24,11 +22,13 @@ public class IndividualLessonFile {
         obj.close();
     }
 
-    public void readIndividualLesson() throws IOException, ClassNotFoundException {
+    public ArrayList<IndividualLesson> readIndividualLesson() throws IOException, ClassNotFoundException {
 
-        individualLessons.clear();
+        ArrayList<IndividualLesson> individualLessons = new ArrayList<>();
 
-        FileInputStream fileInputStream = new FileInputStream("individualLesson.txt");
+        File file = new File(Configuration.folder, Configuration.individualLessonFile);
+
+        FileInputStream fileInputStream = new FileInputStream(file);
 
         ObjectInputStream obj = new ObjectInputStream(fileInputStream);
 
@@ -38,12 +38,14 @@ public class IndividualLessonFile {
             while (i != null) {
 
                 individualLessons.add(i);
-                System.out.println("Individual lesson read correctly" + i);
+                System.out.println("Individual lesson readed correctly " + i);
                 i = (IndividualLesson) obj.readObject();
             }
         }
         catch(Exception ex){
         }
         obj.close();
+
+        return individualLessons;
     }
 }

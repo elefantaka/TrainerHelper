@@ -30,7 +30,7 @@ public class Application {
 
     //wpisuje id klienta
     public void registerClient(int idClient, int idGroup){
-        Client client = clientService.findClient();
+        Client client = clientService.findClient(idClient);
         schedule.registerClient(client, idGroup);
     }
 }

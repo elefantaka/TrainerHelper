@@ -27,6 +27,11 @@ public class ClientService {
     }
 
     public Client findClient(int idClient) {
+        Client client = new Client(1,"Basia", "basia@wp.pl");
         //petla for po liscie
+        for(Client c : clients){
+
+        }
+        return client;
     }
 }

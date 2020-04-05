@@ -16,6 +16,38 @@ public class SportLesson implements Serializable {
         this.date = date;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public KindOfLesson getLesson() {
+        return lesson;
+    }
+
+    public void setLesson(KindOfLesson lesson) {
+        this.lesson = lesson;
+    }
+
+    public LessonDate getDate() {
+        return date;
+    }
+
+    public void setDate(LessonDate date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
         return "SportLesson{" +

@@ -29,7 +29,7 @@ public class EmployeeFile {
 
         File file = new File(Configuration.folder, Configuration.employeesFile);
 
-        FileInputStream fileStream = new FileInputStream("employees.txt");
+        FileInputStream fileStream = new FileInputStream(file);
 
         ObjectInputStream obj = new ObjectInputStream(fileStream);
 

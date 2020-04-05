@@ -4,10 +4,13 @@ import dataBase.IndividualLessonFile;
 import systemModel.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class TestIndividualLessonFile {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         System.out.println("IndividualLessonFile test");
+
+        ArrayList<IndividualLesson> individualLessons = new ArrayList<>();
 
         IndividualLessonFile individualLessonFile = new IndividualLessonFile();
 
@@ -19,7 +22,9 @@ public class TestIndividualLessonFile {
 
         IndividualLesson individualLesson = new IndividualLesson(1, employee, KindOfLesson.Swimming, lessonDate, client);
 
-        individualLessonFile.addIndividualLesson(individualLesson);
+        individualLessons.add(individualLesson);
+
+        individualLessonFile.addIndividualLesson(individualLessons);
 
         individualLessonFile.readIndividualLesson();
     }

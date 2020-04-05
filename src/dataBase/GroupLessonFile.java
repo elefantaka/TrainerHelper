@@ -1,6 +1,5 @@
 package dataBase;
 
-import systemModel.Employee;
 import systemModel.GroupLesson;
 
 import java.io.*;
@@ -8,15 +7,11 @@ import java.util.ArrayList;
 
 public class GroupLessonFile {
 
-    private ArrayList<GroupLesson> groupLessons = new ArrayList<>();
+    public void addGroupLesson(ArrayList<GroupLesson> groupLessons) throws IOException {
 
-    public void addGroupLesson(GroupLesson groupLesson) throws IOException {
+        File file = new File(Configuration.folder, Configuration.groupLessonFile);
 
-        groupLessons.add(groupLesson);
-
-        System.out.println(groupLesson);
-
-        FileOutputStream fileStream = new FileOutputStream("groupLesson.txt");
+        FileOutputStream fileStream = new FileOutputStream(file);
 
         ObjectOutputStream obj = new ObjectOutputStream(fileStream);
 
@@ -27,11 +22,13 @@ public class GroupLessonFile {
         obj.close();
     }
 
-    public void readGroupLesson() throws IOException, ClassNotFoundException {
+    public ArrayList<GroupLesson> readGroupLesson() throws IOException, ClassNotFoundException {
 
-        groupLessons.clear();
+        ArrayList<GroupLesson> groupLessons = new ArrayList<>();
 
-        FileInputStream fileStream = new FileInputStream("groupLesson.txt");
+        File file = new File(Configuration.folder, Configuration.groupLessonFile);
+
+        FileInputStream fileStream = new FileInputStream(file);
 
         ObjectInputStream obj = new ObjectInputStream(fileStream);
 
@@ -40,12 +37,14 @@ public class GroupLessonFile {
         try {
             while (g != null) {
                 groupLessons.add(g);
-                System.out.println("Przeczytano pracownika " + g);
+                System.out.println("Group lesson readed correctly " + g);
                 g = (GroupLesson) obj.readObject();
             }
         }
         catch(Exception ex){
         }
         obj.close();
+
+        return groupLessons;
     }
 }
