@@ -20,8 +20,8 @@ public class Schedule {
         return groupLesson;
     }
 
-    public void registerClient(Client client, int idGroup){
-        GroupLesson foundLesson = findLesson(idGroup);
+    public void registerClient(Client client, int idLesson){
+        GroupLesson foundLesson = findLesson(idLesson);
         foundLesson.recordTheClient(client);
         groupLessonService.saveGroupLesson();
     }

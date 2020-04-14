@@ -16,22 +16,35 @@ public class ClientService {
         clients = clientFile.readClients();
     }
 
-    //find client, add client
+    private int findMaxID(){
+        int maxID = 0;
+        for(Client c : clients){
+            if(c.getId() > maxID){
+                maxID = c.getId();
+            }
+        }
+        return maxID;
+    }
 
     public void addAndSaveClient(Client client) throws IOException {
         ClientFile clientFile = new ClientFile();
+
+        int newID = findMaxID() + 1;
+
+        client.setId(newID);
 
         clients.add(client);
 
         clientFile.saveClients(clients);
     }
 
-    public Client findClient(int idClient) {
-        Client client = new Client(1,"Basia", "basia@wp.pl");
-        //petla for po liscie
-        for(Client c : clients){
+    public Client findClient(int idFindClient) {
 
+        for(Client c : clients){
+            if(c.getId() == idFindClient){
+                return c;
+            }
         }
-        return client;
+        return null;
     }
 }

@@ -7,15 +7,18 @@ import systemModel.Schedule;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Application {
+public class Application implements InterApplication {
 
     private ClientService clientService;
+    private EmployeeService employeeService;
     private Schedule schedule;
 
     public Application() throws IOException, ClassNotFoundException {
 
         clientService = new ClientService();
+        employeeService = new EmployeeService();
         schedule = new Schedule();
+
     }
 
     public ArrayList<GroupLesson> getSchedule(){
@@ -32,5 +35,9 @@ public class Application {
     public void registerClient(int idClient, int idGroup){
         Client client = clientService.findClient(idClient);
         schedule.registerClient(client, idGroup);
+    }
+
+    public void addNewClient(Client client) throws IOException {
+        clientService.addAndSaveClient(client);
     }
 }
